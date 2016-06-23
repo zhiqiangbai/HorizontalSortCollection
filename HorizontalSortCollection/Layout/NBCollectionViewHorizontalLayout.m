@@ -9,7 +9,9 @@
 #import "NBCollectionViewHorizontalLayout.h"
 
 @interface NBCollectionViewHorizontalLayout()
-
+/**
+ *  存储item相关信息
+ */
 @property (strong, nonatomic) NSMutableArray *allAttributes;
 
 @end
@@ -28,7 +30,6 @@
         NSUInteger count = [self.collectionView numberOfItemsInSection:indexSection];
         for (NSUInteger i = 0; i<count; i++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:indexSection];
-            NSLog(@"===for ===>>>>%ld === %ld",indexPath.section,indexPath.row);
             UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
             [self.allAttributes addObject:attributes];
         }
@@ -47,11 +48,11 @@
     NSUInteger y;
     [self targetPositionWithItem:item resultX:&x resultY:&y];
     NSUInteger item2 = [self originItemAtX:x y:y];
-    NSIndexPath *theNewIndexPath = [NSIndexPath indexPathForItem:item2 inSection:indexPath.section];
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:item2 inSection:indexPath.section];
     
-    UICollectionViewLayoutAttributes *theNewAttr = [super layoutAttributesForItemAtIndexPath:theNewIndexPath];
-    theNewAttr.indexPath = indexPath;
-    return theNewAttr;
+    UICollectionViewLayoutAttributes *newAttr = [super layoutAttributesForItemAtIndexPath:newIndexPath];
+    newAttr.indexPath = indexPath;
+    return newAttr;
 }
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
@@ -81,15 +82,15 @@
                        resultX:(NSUInteger *)x
                        resultY:(NSUInteger *)y
 {
-    NSUInteger page = item/(self.itemCountPerRow*self.rowCount);
+    NSUInteger page = item/(self.itemCountForRow*self.rowCount);
     
-    NSUInteger theX = item % self.itemCountPerRow + page * self.itemCountPerRow;
-    NSUInteger theY = item / self.itemCountPerRow - page * self.rowCount;
+    NSUInteger newX = item % self.itemCountForRow + page * self.itemCountForRow;
+    NSUInteger newY = item / self.itemCountForRow - page * self.rowCount;
     if (x != NULL) {
-        *x = theX;
+        *x = newX;
     }
     if (y != NULL) {
-        *y = theY;
+        *y = newY;
     }
 }
 

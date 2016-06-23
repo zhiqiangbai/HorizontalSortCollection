@@ -32,7 +32,7 @@
     [super viewDidLoad];
     NBCollectionViewHorizontalLayout *layout = (NBCollectionViewHorizontalLayout *)[self.collectionView collectionViewLayout];
     layout.rowCount = 2;
-    layout.itemCountPerRow = 4;
+    layout.itemCountForRow = 4;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     layout.itemSize = CGSizeMake((self.view.bounds.size.width-50)/4, ((self.view.bounds.size.width)/2-30)/2);
