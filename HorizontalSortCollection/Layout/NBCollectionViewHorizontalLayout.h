@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 /**
- *  CollectionView水平排列布局(请保证UICollectionView宽高与行列匹配,eg:itemCountForRow=2;rowCount=4;itemSize = {50,50},padding = 10,那么 viewWidth = 250,viewHeight = 130)
+ *  CollectionView水平排列布局
  */
 @interface NBCollectionViewHorizontalLayout : UICollectionViewFlowLayout
 

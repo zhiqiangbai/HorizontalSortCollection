@@ -33,7 +33,6 @@
     NBCollectionViewHorizontalLayout *layout = (NBCollectionViewHorizontalLayout *)[self.collectionView collectionViewLayout];
     layout.rowCount = 2;
     layout.itemCountForRow = 4;
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     layout.itemSize = CGSizeMake((self.view.bounds.size.width-50)/4, ((self.view.bounds.size.width)/2-30)/2);
     self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -61,7 +60,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 8;
+    return 7;
 }
 
 
